@@ -8,7 +8,7 @@ class Main {
     public void tsvReader(database db, String ratingFileLocation, String basicsFileLocation) {
         try (BufferedReader ratingReader = new BufferedReader(new FileReader(ratingFileLocation))) {
             String line;
-            boolean isFirstLine = true;  // Fix: was "boolean ratingReader=true"
+            boolean isFirstLine = true;  
             
             while ((line = ratingReader.readLine()) != null) {
                 if (isFirstLine) {
@@ -16,8 +16,8 @@ class Main {
                     continue;
                 }
                 
-                VideoObj holder = new VideoObj();  // Fix: was "new holder = new VideoObj();"
-                // pull rating and ID info first
+                VideoObj holder = new VideoObj(); 
+                
                 String[] fields = line.split("\t");
                 holder.setTconst(fields[0]);
                 holder.setAverageRating(Double.parseDouble(fields[1]));
@@ -26,6 +26,29 @@ class Main {
             }
         } catch (IOException e) {  // Add missing catch block
             System.err.println("Error reading file: " + e.getMessage());
+        }
+
+        try(BufferedReader ratingReader = new BufferedReader(new FileReader(basicsFileLocation))){
+            String line;
+            Boolean isFirstLine = true;
+
+            while ((line = ratingReader.readLine()) != null) {
+                if (isFirstLine) {
+                    isFirstLine = false;
+                    continue;
+                }
+                String[] fields = line.split("\t");
+                VideoObj holder = db.getVideo(fields[0]);
+                holder.setTitleType(fields[1]);
+                holder.setPrimaryTitle(fields[2]);
+                holder.setOriginalTitle(fields[3]);
+                holder.setAdult(false);
+                if(Integer.parseInt(fields[4]) == 0){
+                    holder.setAdult(true);
+                }
+                holder.setAdult()
+
+
         }
     }
     
