@@ -28,15 +28,15 @@ public class VideoObj implements IMDB {
     }
 
     public VideoObj(){
-        this.tconst = "";
-        this.titleType = "";;
-        this.primaryTitle = "";;
-        this.originalTitle = "";;
+        this.tconst = null;
+        this.titleType = null;
+        this.primaryTitle = null;
+        this.originalTitle = null;
         this.isAdult = false;
-        this.startYear = 0;
+        this.startYear = 0; 
         this.endYear = 0;
         this.runtimeMinutes = 0;
-        this.genres = new string[0];
+        this.genres = new String[0];
         this.averageRating = 0.0;
         this.numVotes = 0;
     }
