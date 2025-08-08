@@ -1,3 +1,4 @@
+package reader;
 public interface IMDB {
     String getTconst();
     void setTconst(String tconst);

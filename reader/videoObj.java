@@ -1,3 +1,5 @@
+package reader;
+
 public class VideoObj implements IMDB {
     private String tconst;
     private String titleType;
